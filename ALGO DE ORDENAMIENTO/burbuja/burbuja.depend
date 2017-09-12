@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1504327270 source:d:\burbuja\main.cpp
+	<iostream>
+	<conio.h>
+
+1504327613 source:d:\algo de ordenamiento\burbuja\main.cpp
+	<iostream>
+	<conio.h>
+
