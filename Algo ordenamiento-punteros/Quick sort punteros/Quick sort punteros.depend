@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1506149159 source:d:\algo ordenamiento-punteros\quick sort punteros\main.cpp
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+	<math.h>
+

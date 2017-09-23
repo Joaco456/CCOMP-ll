@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1506144684 source:d:\insersion punteros\main.cpp
+	<iostream>
+	<conio.h>
+
+1506144752 source:d:\algo ordenamiento-punteros\insersion punteros\main.cpp
+	<iostream>
+	<conio.h>
+
