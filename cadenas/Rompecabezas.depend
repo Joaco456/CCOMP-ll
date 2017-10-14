@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1507998234 source:c:\users\alumno-d\rompecabezas\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<conio.h>
+
