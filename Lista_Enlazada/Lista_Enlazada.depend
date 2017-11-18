@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1510889480 source:d:\lista_enlazada\main.cpp
+	<iostream>
+	<stdlib.h>
+	<conio.h>
+

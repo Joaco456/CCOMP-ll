@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1510967076 source:d:\lista_doblemente\main.cpp
+	<iostream>
+	<stdlib.h>
+	<stdio.h>
+
