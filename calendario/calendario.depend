@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1521810418 source:c:\users\alumno-g\desktop\calendario\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+
