@@ -3,104 +3,144 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include<stdio.h>
-
+#include <stdio.h>
 
 using namespace std;
 
-
-
-void ImprimirTabla()
+void Imprimir(int arreglo[][4])
 {
-    int i =0,j;
-    while(i<4)
+    for(int i=0;i<4;i++)
     {
-        j=0;
-        while(j<4)
-        {
-           // printf("[%2i]",tabla[i][j]);
-            j++;
-        }
-        cout<<"\n";
-        i++;
+            for(int j=0;j<4;j++)
+            {
+                if(arreglo[i][j] != 0)
+                {
+                    printf("   [%2i]",arreglo[i][j]);
+                }
+                else{
+                    printf("   [  ]");
+                }
+
+            }
+            cout<<endl;
     }
+}
+void Cambio(int *a, int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 int main()
 {
-    cout<<"\n";
-    cout<<"             PUZZLE           "<<endl;
-    cout<<"\n";
-    int i=0,j=0,contador=1;
-    char caracter,enter;
-    int (*tabla)[4];
-    int x = 3, y = 3;
-    while(i<4)
+    int Arrows[]={72,80,75,77,80,77,75,80,72,72,80,77,75};
+    int sorted[4][4];
+    int arreglo[4][4]={ {1,2,3,4},
+                        {5,6,7,8},
+                        {9,10,11,12},
+                        {13,14,15}};
+
+    memcpy(sorted,arreglo,sizeof(arreglo));
+
+    int *first=*arreglo;
+    int *last=*(arreglo+3)+3;
+    int (*p)[4];
+    int *s;
+    p=&arreglo[3];
+    s=*p+3;
+    int *B=*p;
+    while(true)
     {
-        j=0;
-        while(j<4)
-        {
-            tabla[i][j] = contador;
-            printf("[%2i]",tabla[i][j]);
-            j++;
-            contador++;
-        }
+
+        system("cls");
+        cout<<"            "<<"PUZZLE"<<endl;
         cout<<"\n";
-        i++;
-    }
-    tabla[3][3] = 0;
-    ImprimirTabla();
-    do
-    {
-        caracter = getchar();
-        enter = getchar();
-        switch(caracter)
+        Imprimir(arreglo);
+        //cout<<endl<<**p<<" "<<*s<<endl;
+        int c=0;
+        int repeat=1;
+
+        c=getch();
+        while(repeat>0)
         {
-            case 'w':
-                if(y<=2)
+
+            int random=rand() % 13;
+            (repeat>1)?c=Arrows[random]:c=c;
+
+
+            switch(c)
+            {
+                int temp;
+                case 72:
                 {
 
+                    if(*(p-1)<last and *(p-1)>=first)
+                    {
+                        Cambio((s-4),s);
+                        p--;
+                        s=*p+(s-B);
+
+                        B=*p;
+
+                    }
+                    break;
                 }
-                else{
-                    cout<<"Fuera del limite"<<endl;
-                }
-            break;
-            case 's':
-                if(y>=1)
+                case 80:
                 {
 
+                    if(*(p+1)<last and *(p+1)>first)
+                    {
+
+                        Cambio((s+4),s);
+                        p++;
+                        s=*p+(s-B);
+                        B=*p;
+                    }
+                    break;
                 }
-                else{
-                    cout<<"Fuera del limite"<<endl;
-                }
-            break;
-            case 'a':
-                if(x<=2)
+                case 75:
                 {
 
+
+                    if(s-1>=*p)
+                    {
+
+                        Cambio((s-1),s);
+                        s--;
+                    }
+                    break;
                 }
-                else{
-                    cout<<"Fuera del limite"<<endl;
-                }
-            break;
-            case 'd':
-                if(x>=1)
+                case 77:
                 {
 
+                    if(s+1<*(p+1))
+                    {
+
+                        Cambio((s+1),s);
+                        s++;
+
+                    }
+                    break;
                 }
-                else{
-                    cout<<"Fuera del limite"<<endl;
+                case 13:
+                {
+                    memcpy(arreglo,sorted,sizeof(sorted));
+                    repeat=5000;
+                    p=arreglo+3;
+                    B=*p;
+                    s=*p+3;
+                    break;
                 }
-            break;
-            case '0':
-            break;
-            default:
-                cout<<"Caracter invalido"<<endl;
+                case 27:
+                {
+                    return 0;
+                }
+            }
+            repeat--;
         }
-
-    }while(caracter != '0');
-
-
+    }
 
     return 0;
 }
