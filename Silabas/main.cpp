@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 bool vocal(char A)
 {
     if(A =='A'||A == 'E'||A == 'I'||A == 'O'||A == 'U')
@@ -14,8 +15,6 @@ bool vocal(char A)
 }
 
 
-
-
 void Silabas(char *A, char *B)
 {
      while(*A)
@@ -24,17 +23,69 @@ void Silabas(char *A, char *B)
 
          if(vocal(*A))
          {
-             //cons = sgtVocal(A+1);
+
              B++;
              *B ='-';
 
-            if(vocal(*A) &&(!vocal(*(A+1)) && !vocal(*(A+2))) && vocal(*(A+3))) // CASO 2 CONSONANTES ENTRE 2 VOCALES
+            if(vocal(*A) && vocal(*(A+1)) && (vocal(*(A+2)) || *(A+2) == 'Y')) // TRIPTONGO
+            {
+                A++;
+                *B = *A;
+                B++;
+                A++;
+                *B = *A;
+                B++;
+                *B = '\0';
+            }
+
+            if(vocal(*A) && vocal(*(A+1)))// DIPTONGO
+            {
+                A++;
+                *B = *A;
+                B++;
+                *B = '-';
+
+            }
+
+
+            if(*(A+1) == 'M' && (*(A+2) == 'B' || *(A+2) == 'P'))
+             {
+                A++;
+                *B = *A;
+                B++;
+                *B = '-';
+             }
+
+             if((*(A-1)=='S'&&*A=='U'&& *(A+1)=='B') || (*(A-1)=='P'&&*A=='O'&& *(A+1)=='S' && *(A+2) == 'T'))
              {
                  A++;
                  *B = *A;
                  B++;
-                 *B = '-';
+                 *B='-';
+
              }
+
+            /*if(vocal(*A) && *(A+1) == 'P')
+            {
+               B--;
+               *B = *A;
+               A++;
+               B++;
+               *B = *A;
+               B++;
+               *B = '-';
+            }*/
+
+            if(*(A+1)=='P' || *(A+1)=='B' || *(A+1)=='G' && ((*(A+2)=='R'||*(A+2)=='L')))
+            {
+
+                B++;
+                *B = *A;
+                A++;
+                *B = *A;
+
+            }
+
 
             if(vocal(*A)&&(!vocal(*(A+1)) && !vocal(*(A+2)) && !vocal(*(A+3))) && vocal(*(A+4))) //CASO 3 CONSONANTES ENTRE 2 VOCALES
              {
@@ -49,7 +100,8 @@ void Silabas(char *A, char *B)
 
              }
 
-             if(vocal(*A)&&(!vocal(*(A+1)) && !vocal(*(A+2)) && !vocal(*(A+3)) && !vocal(*(A+4))) && vocal(*(A+5))) //CASO 4 C ENTRE 2 V
+
+            if(vocal(*A)&&(!vocal(*(A+1)) && !vocal(*(A+2)) && !vocal(*(A+3)) && !vocal(*(A+4))) && vocal(*(A+5))) //CASO 4 C ENTRE 2 V
              {
                 A++;
                 *B = *A;
@@ -61,35 +113,36 @@ void Silabas(char *A, char *B)
 
              }
 
-            if((*(A+1) == 'R'||*(A+1) == 'S'|| *(A+1) == 'N' || *(A+1) == 'L'|| *(A+1) == 'Z') && *(A+2) == '\0')//TERMINA EN R,S,N
+            if(*(A+1) == 'R' && *(A+2) == 'R'||(*(A+1) == 'L' && *(A+2) == 'L'))
+             {
+
+                *B = '-';
+                B++;
+                A++;
+                *B = *A;
+                A++;
+                B++;
+                *B = *A;
+
+
+             }
+
+             if(vocal(*A) &&(!vocal(*(A+1)) && !vocal(*(A+2))) && vocal(*(A+3))) // CASO 2 CONSONANTES ENTRE 2 VOCALES
+             {
+                 A++;
+                 *B = *A;
+                 B++;
+                 *B = '-';
+             }
+
+
+            if((*(A+1) == 'R'||*(A+1) == 'S'|| *(A+1) == 'N' || *(A+1) == 'L'|| *(A+1) == 'Z'||*(A+1) == 'D') && *(A+2) == '\0')//TERMINA EN R,S,N
             {
                 A++;
                 *B = *A;
                 B++;
                 *B = '\0';
             }
-            if(!vocal(*A) && vocal(*(A+1)) && vocal(*(A+2)) && !vocal(*(A+3)))// 2 V ENTRE 2 C
-            {
-                 B--;
-                *B = *A;
-                B++;
-                A++;
-                *B = *A;
-                B++;
-                *B = '-';
-
-
-            }
-
-
-            if(*(A+1) == 'M' && (*(A+2) == 'B' || *(A+2) == 'P'))
-             {
-                A++;
-                *B = *A;
-                B++;
-                *B = '-';
-             }
-
 
 
 
@@ -106,15 +159,6 @@ void Silabas(char *A, char *B)
              }
 
 
-
-            if((*(A-1)=='S'&&*A=='U'&& *(A+1)=='B') || (*(A-1)=='P'&&*A=='O'&& *(A+1)=='S' && *(A+2) == 'T'))
-             {
-                 A++;
-                 *B = *A;
-                 B++;
-                 *B='-';
-
-             }
             if(vocal(*A)&& *(A+1) == 'N' && *(A+2) == '\0')
             {
                 A++;
@@ -123,12 +167,6 @@ void Silabas(char *A, char *B)
                 *B = '\0';
 
             }
-           /* if(vocal(*A) &&(*(A+1) == 'R' && *(A+2) == 'R') || (*(A+1) == 'L' && *(A+2) == 'L'))
-             {
-
-
-
-             }*/
 
          }
          B++;
