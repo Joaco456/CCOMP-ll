@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1541131332 source:d:\ccomp 3veces\eliminacion gausseana\main.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+
