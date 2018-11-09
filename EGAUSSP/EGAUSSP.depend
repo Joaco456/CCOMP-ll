@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1541730575 source:d:\ccomp 3veces\egaussp\main.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+
