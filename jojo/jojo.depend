@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1542978276 source:c:\users\alumno-g\jojo\main.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+
