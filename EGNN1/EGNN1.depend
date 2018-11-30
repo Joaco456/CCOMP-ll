@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1543542618 source:d:\ccomp 3veces\egnn1\main.cpp
+	<iostream>
+	<cstdlib>
+	<stdio.h>
+	<conio.h>
+
