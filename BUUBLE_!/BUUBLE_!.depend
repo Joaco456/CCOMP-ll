@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1553573093 source:d:\aed\buuble_!\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
