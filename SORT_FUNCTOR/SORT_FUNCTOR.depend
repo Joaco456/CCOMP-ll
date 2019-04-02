@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1554179791 source:d:\aed\sort_functor\main.cpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
